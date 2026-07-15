@@ -393,7 +393,7 @@
 <section id="about" class="section">
   <div class="container about-grid">
     <div class="about-photo reveal">
-      <div class="frame"><img src="images/logo-small.png" alt="Nagaraju Kunderla - Founder, KNR Fortune Financial Services"></div>
+      <div class="frame"><img src="images/advisor-photo.jpg" alt="Nagaraju Kunderla - Founder, KNR Fortune Financial Services"></div>
       <div class="badge-float">
         <b>9+</b>
         <div><span>Years of trusted<br>financial guidance</span></div>
@@ -606,7 +606,10 @@
       </div>
     </div>
 
-    <form id="enquiryForm" class="reveal">
+    <form id="enquiryForm" class="reveal" action="https://formsubmit.co/knrfortunefs@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Enquiry - KNR Fortune Website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
       <div class="form-row">
         <div class="form-group">
           <label for="fname">Full Name *</label>
@@ -767,16 +770,14 @@
     window.open(`https://wa.me/919247475754?text=${msg}`, '_blank');
   }
 
-  // enquiry form -> build WhatsApp message + mailto fallback
+  // enquiry form -> submit to FormSubmit (emails knrfortunefs@gmail.com) via AJAX
   const form = document.getElementById('enquiryForm');
   const statusEl = document.getElementById('formStatus');
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
     const name = document.getElementById('fname').value.trim();
     const phone = document.getElementById('fphone').value.trim();
-    const email = document.getElementById('femail').value.trim();
     const product = document.getElementById('fproduct').value;
-    const message = document.getElementById('fmessage').value.trim();
 
     if(!name || !phone || !product){
       statusEl.style.display = 'block';
@@ -785,17 +786,41 @@
       return;
     }
 
-    const waText = encodeURIComponent(
-      `New Enquiry - KNR Fortune Website\nName: ${name}\nPhone: ${phone}\nEmail: ${email || '-'}\nProduct: ${product}\nMessage: ${message || '-'}`
-    );
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
 
-    // Open WhatsApp with the lead details pre-filled to notify the advisor
-    window.open(`https://wa.me/919247475754?text=${waText}`, '_blank');
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/knrfortunefs@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'New Enquiry - KNR Fortune Website',
+          Name: name,
+          Phone: phone,
+          Email: document.getElementById('femail').value.trim() || '-',
+          Product: product,
+          Message: document.getElementById('fmessage').value.trim() || '-'
+        })
+      });
 
-    statusEl.style.display = 'block';
-    statusEl.style.color = '#1a7f37';
-    statusEl.textContent = 'Thank you! Your enquiry has been prepared in WhatsApp — please tap Send there to reach us instantly.';
-    form.reset();
+      if(res.ok){
+        statusEl.style.display = 'block';
+        statusEl.style.color = '#1a7f37';
+        statusEl.textContent = 'Thank you! Your enquiry has been sent to our team by email — we will contact you shortly.';
+        form.reset();
+      } else {
+        throw new Error('Send failed');
+      }
+    } catch(err){
+      statusEl.style.display = 'block';
+      statusEl.style.color = '#d9534f';
+      statusEl.textContent = 'Something went wrong sending your enquiry. Please WhatsApp or call us directly using the buttons below.';
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
   });
 </script>
 
