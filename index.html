@@ -92,9 +92,9 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
   .brand{display:flex;align-items:center;gap:12px;}
   .brand img{width:46px;height:46px;border-radius:50%;}
-  .brand-text{display:flex;flex-direction:row;align-items:baseline;gap:6px;flex-wrap:wrap;}
-  .brand-text b{color:var(--white);font-family:'Playfair Display',serif;font-size:1.08rem;letter-spacing:.3px;}
-  .brand-text span{color:var(--gold-400);font-size:.78rem;letter-spacing:.3px;font-weight:600;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.2;}
+  .brand-text b{color:var(--white);font-family:'Playfair Display',serif;font-size:1.05rem;letter-spacing:.8px;text-transform:uppercase;}
+  .brand-text span{color:var(--gold-400);font-size:.72rem;letter-spacing:.8px;font-weight:600;}
   .nav-links{display:flex;gap:34px;align-items:center;}
   .nav-links a{color:var(--muted-light);font-size:.9rem;font-weight:500;transition:color .2s ease;position:relative;}
   .nav-links a:hover{color:var(--gold-400);}
@@ -283,8 +283,8 @@
   .partners-marquee::after{right:0;background:linear-gradient(270deg,var(--navy-900),transparent);}
   .partners-track{display:flex;width:fit-content;animation:partners-scroll 45s linear infinite;}
   .partners-track:hover{animation-play-state:paused;}
-  .partner-chip{background:var(--white);border-radius:12px;padding:14px 22px;margin:0 12px;display:flex;align-items:center;justify-content:center;height:70px;min-width:130px;box-shadow:0 10px 24px -14px rgba(0,0,0,.4);flex-shrink:0;}
-  .partner-chip img{max-height:42px;max-width:110px;object-fit:contain;}
+  .partner-chip{background:var(--white);border-radius:12px;padding:8px 18px;margin:0 12px;display:flex;align-items:center;justify-content:center;height:58px;min-width:150px;box-shadow:0 10px 24px -14px rgba(0,0,0,.4);flex-shrink:0;}
+  .partner-chip img{max-height:48px;max-width:140px;width:auto;height:auto;object-fit:contain;}
   @keyframes partners-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
   /* ---------- GALLERY ---------- */
@@ -401,7 +401,8 @@
         <svg width="30" height="30" fill="none" stroke="#e2c565" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <div>
           <b>Nagaraju Kunderla, M.Com</b>
-          <span>Insurance &amp; Financial Advisor · 9+ Years · IRDAI &amp; AMFI Certified</span>
+          <span>9+ years of experience</span><br>
+          <span>IRDAI &amp; AMFI Certified</span>
         </div>
       </div>
       <div class="hero-ctas">
@@ -528,8 +529,8 @@
       <div class="about-text">
         <p class="te">నాగరాజు కుందేర్ల గారు M.Com విద్యార్హతతో, గత 9+ సంవత్సరాలుగా వందలాది కుటుంబాలకు మరియు వ్యాపారులకు సరైన Insurance &amp; Investment నిర్ణయాలు తీసుకోవడంలో సహాయపడుతున్నారు.</p>
         <p>As a fully IRDAI &amp; AMFI certified advisor, Nagaraju compares multiple insurers and fund houses to find the option that genuinely fits each client's needs — not just the first policy on the shelf.</p>
-        <p class="te">Fast &amp; hassle-free processing, minimal paperwork, మరియు claim సమయంలో వ్యక్తిగత మద్దతు — ఇదే KNR Fortune ప్రత్యేకత.</p>
-        <p>From protecting your family's future to growing your wealth through mutual funds, loans, and real estate — KNR Fortune is built to be your one trusted financial partner for life.</p>
+        <p class="te">Fast &amp; hassle-free processing, minimal paperwork, మరియు claim సమయంలో వ్యక్తిగత మద్దతు — ఇదే KNR Fortune Financial Services ప్రత్యేకత.</p>
+        <p>From protecting your family's future to growing your wealth through mutual funds, loans, and real estate — KNR Fortune Financial Services is built to be your one trusted financial partner for life.</p>
       </div>
     </div>
   </div>
@@ -722,7 +723,7 @@
       </div>
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
-        <p class="te">"Home loan process చాలా వేగంగా, తక్కువ paperwork తో పూర్తయ్యింది. Highly recommend KNR Fortune!"</p>
+        <p class="te">"Home loan process చాలా వేగంగా, తక్కువ paperwork తో పూర్తయ్యింది. Highly recommend KNR Fortune Financial Services!"</p>
         <div class="testi-who">
           <div class="testi-avatar">K</div>
           <div><b>Karthik Rao</b><span>Hyderabad, Telangana</span></div>
@@ -775,7 +776,7 @@
 
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
-        <p>"Got a term life insurance policy through KNR Fortune — the whole process was explained clearly with no pressure to buy more than I needed."</p>
+        <p>"Got a term life insurance policy through KNR Fortune Financial Services — the whole process was explained clearly with no pressure to buy more than I needed."</p>
         <div class="testi-who">
           <div class="testi-avatar">S</div>
           <div><b>Suresh Babu</b><span>Mangalagiri · Life Insurance</span></div>
@@ -900,6 +901,7 @@
       <a href="https://www.instagram.com/knrfortunefs" target="_blank" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
       <a href="https://facebook.com/knrfortunefinancialservices" target="_blank" aria-label="Facebook"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
       <a href="https://www.threads.com/@knrfortunefs" target="_blank" aria-label="Threads"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v10m-4-6h8"/></svg></a>
+      <a href="https://t.me/knrfortunefs" target="_blank" aria-label="Telegram"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></a>
       <a href="https://x.com/KNRFORTUNEFS" target="_blank" aria-label="X"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
       <a href="https://www.youtube.com/@KNRFORTUNEFS" target="_blank" aria-label="YouTube"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
     </div>
