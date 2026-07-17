@@ -242,14 +242,35 @@
   .contact-card h4{font-size:1rem;color:var(--navy-900);margin-bottom:6px;}
   .contact-card span{font-size:.86rem;color:var(--muted);display:block;margin-bottom:14px;}
   .social-row{display:flex;justify-content:center;gap:12px;margin-top:36px;}
-  .social-row a{width:42px;height:42px;border-radius:50%;background:var(--navy-900);display:flex;align-items:center;justify-content:center;transition:background .2s, transform .2s;}
-  .social-row a:hover{background:var(--gold-500);transform:translateY(-3px);}
-  .social-row a svg{width:18px;height:18px;color:var(--gold-300);}
-  .social-row a:hover svg{color:var(--navy-900);}
+  .social-row a{width:42px;height:42px;border-radius:50%;background:var(--navy-900);display:flex;align-items:center;justify-content:center;transition:background .2s, transform .2s;position:relative;}
+  .social-row a:hover{transform:translateY(-3px);}
+  .social-row a svg{width:18px;height:18px;color:var(--gold-300);transition:color .2s;}
+  .social-row a:hover svg{color:#fff;}
+  .social-row a.ig:hover{background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+  .social-row a.fb:hover{background:#1877F2;}
+  .social-row a.th:hover{background:#000;}
+  .social-row a.tg:hover{background:#26A5E4;}
+  .social-row a.x:hover{background:#000;}
+  .social-row a.yt:hover{background:#FF0000;}
+  .social-row a::after{
+    content:attr(data-tooltip);
+    position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);
+    background:var(--navy-900);color:var(--white);font-size:.72rem;font-weight:600;
+    padding:6px 12px;border-radius:6px;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;
+    box-shadow:0 8px 18px -8px rgba(0,0,0,.4);
+  }
+  .social-row a::before{
+    content:"";position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);
+    border:5px solid transparent;border-top-color:var(--navy-900);
+    opacity:0;pointer-events:none;transition:opacity .2s ease;
+  }
+  .social-row a:hover::after{opacity:1;transform:translateX(-50%) translateY(0);}
+  .social-row a:hover::before{opacity:1;}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--navy-900);color:var(--muted-light);padding:56px 0 26px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;}
   .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
   .footer-brand img{width:44px;height:44px;border-radius:50%;}
   .footer-brand b{color:var(--white);font-family:'Playfair Display',serif;font-size:1.1rem;}
@@ -469,6 +490,7 @@
       <div class="partner-chip"><img src="https://i.postimg.cc/3dRDJs68/9.png" alt="Partner"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/KRw4cRBf/Adani-Finance-Rebrand-Grey-BK-2048x1024.jpg" alt="Adani Finance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/mcGDMJdF/Axis-Max-Life-Insurance-logo-svg.png" alt="Axis Max Life Insurance"></div>
+      <div class="partner-chip"><img src="https://i.ibb.co/CKxrStT1/cdnlogo-com-lic-logo.png" alt="LIC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/WFN1YrcN/Care-Health-Insurance-Walk-in-Recruitment.png" alt="Care Health Insurance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/8FBCb43X/CSC.png" alt="CSC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/pphXSR4F/CSC-LOAN-BAZAR.jpg" alt="CSC Loan Bazar"></div>
@@ -497,6 +519,7 @@
       <div class="partner-chip"><img src="https://i.postimg.cc/3dRDJs68/9.png" alt="Partner"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/KRw4cRBf/Adani-Finance-Rebrand-Grey-BK-2048x1024.jpg" alt="Adani Finance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/mcGDMJdF/Axis-Max-Life-Insurance-logo-svg.png" alt="Axis Max Life Insurance"></div>
+      <div class="partner-chip"><img src="https://i.ibb.co/CKxrStT1/cdnlogo-com-lic-logo.png" alt="LIC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/WFN1YrcN/Care-Health-Insurance-Walk-in-Recruitment.png" alt="Care Health Insurance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/8FBCb43X/CSC.png" alt="CSC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/pphXSR4F/CSC-LOAN-BAZAR.jpg" alt="CSC Loan Bazar"></div>
@@ -673,6 +696,7 @@
     </div>
 
     <div class="gallery-grid">
+      <div class="gallery-item reveal" onclick="openLightbox('https://i.ibb.co/Rk1cTfgS/3697089241.jpg')"><img src="https://i.ibb.co/Rk1cTfgS/3697089241.jpg" alt="KNR Fortune Financial Services poster" loading="lazy"></div>
       <div class="gallery-item reveal" onclick="openLightbox('https://i.ibb.co/DH83qjKR/Chat-GPT-Image-Jun-26-2026-08-46-59-PM.png')"><img src="https://i.ibb.co/DH83qjKR/Chat-GPT-Image-Jun-26-2026-08-46-59-PM.png" alt="KNR Fortune poster" loading="lazy"></div>
       <div class="gallery-item reveal" onclick="openLightbox('https://i.ibb.co/pB4pkf63/Chat-GPT-Image-Jun-26-2026-09-03-03-PM.png')"><img src="https://i.ibb.co/pB4pkf63/Chat-GPT-Image-Jun-26-2026-09-03-03-PM.png" alt="KNR Fortune poster" loading="lazy"></div>
       <div class="gallery-item reveal" onclick="openLightbox('https://i.ibb.co/MxdVDnHn/Chat-GPT-Image-Jun-27-2026-08-47-53-PM.png')"><img src="https://i.ibb.co/MxdVDnHn/Chat-GPT-Image-Jun-27-2026-08-47-53-PM.png" alt="KNR Fortune poster" loading="lazy"></div>
@@ -743,7 +767,7 @@
         <p class="te">"ఎర్ర చందనం ఫామ్ ల్యాండ్‌లో invest చేయడం నాకు కొత్త అనుభవం. నాగరాజు గారు ప్రతి డాక్యుమెంట్ వివరంగా చూపించి, నమ్మకంగా ముందుకు తీసుకెళ్లారు."</p>
         <div class="testi-who">
           <div class="testi-avatar">M</div>
-          <div><b>V Mohana Rao</b><span>Mangalagiri · Red Sandal Farm Lands</span></div>
+          <div><b>V Mohana Rao</b><span>Mangalagiri, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -752,7 +776,7 @@
         <p>"I was unsure about investing in Red Sandal Farm Lands initially, but the detailed explanation and site visit support gave me the confidence to go ahead."</p>
         <div class="testi-who">
           <div class="testi-avatar">V</div>
-          <div><b>Y Venu</b><span>Kandukuru · Red Sandal Farm Lands Investment</span></div>
+          <div><b>Y Venu</b><span>Kandukuru, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -761,7 +785,7 @@
         <p class="te">"Red Sandal Farmlands investment గురించి పూర్తి క్లారిటీతో వివరించారు. ఇప్పటివరకు process చాలా transparent గా జరిగింది."</p>
         <div class="testi-who">
           <div class="testi-avatar">R</div>
-          <div><b>Rama Krishna</b><span>Poranki, Vijayawada · Red Sandal Farm Lands</span></div>
+          <div><b>Rama Krishna</b><span>Poranki, Vijayawada, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -770,7 +794,7 @@
         <p class="te">"నా కుటుంబం కోసం సరైన life insurance policy ఎంచుకోవడంలో చాలా సహాయపడ్డారు. ఇప్పుడు నిశ్చింతగా ఉన్నాను."</p>
         <div class="testi-who">
           <div class="testi-avatar">B</div>
-          <div><b>Bhavani</b><span>Atmakur Rural · Life Insurance</span></div>
+          <div><b>Bhavani</b><span>Atmakur Rural, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -779,7 +803,7 @@
         <p>"Got a term life insurance policy through KNR Fortune Financial Services — the whole process was explained clearly with no pressure to buy more than I needed."</p>
         <div class="testi-who">
           <div class="testi-avatar">S</div>
-          <div><b>Suresh Babu</b><span>Mangalagiri · Life Insurance</span></div>
+          <div><b>Suresh Babu</b><span>Mangalagiri, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -788,7 +812,7 @@
         <p class="te">"Health insurance policy selection ని చాలా easyగా చేశారు. ఏదైనా doubt వచ్చినా వెంటనే phone లో answer చేసారు."</p>
         <div class="testi-who">
           <div class="testi-avatar">H</div>
-          <div><b>J Harichandra Prasad</b><span>Bhattiprolu · Health Insurance</span></div>
+          <div><b>J Harichandra Prasad</b><span>Bhattiprolu, Andhra Pradesh</span></div>
         </div>
       </div>
 
@@ -797,7 +821,16 @@
         <p class="te">"హెల్త్ ఇన్సూరెన్స్ పాలసీ తీసుకోవడంలో చాలా genuine గా సలహా ఇచ్చారు. కుటుంబం మొత్తానికి సరైన కవర్ దొరికింది."</p>
         <div class="testi-who">
           <div class="testi-avatar">B</div>
-          <div><b>B Srikanth</b><span>Nowluru · Health Insurance</span></div>
+          <div><b>B Srikanth</b><span>Nowluru, Andhra Pradesh</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Renewed my car's motor insurance through KNR Fortune — got a better premium than my previous policy and the claim process was explained clearly upfront."</p>
+        <div class="testi-who">
+          <div class="testi-avatar">D</div>
+          <div><b>K Durga Rao</b><span>Mangalagiri, Andhra Pradesh</span></div>
         </div>
       </div>
     </div>
@@ -897,12 +930,12 @@
       </div>
     </div>
     <div class="social-row">
-      <a href="https://www.instagram.com/knrfortunefs" target="_blank" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-      <a href="https://facebook.com/knrfortunefinancialservices" target="_blank" aria-label="Facebook"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      <a href="https://www.threads.com/@knrfortunefs" target="_blank" aria-label="Threads"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v10m-4-6h8"/></svg></a>
-      <a href="https://t.me/knrfortunefs" target="_blank" aria-label="Telegram"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></a>
-      <a href="https://x.com/KNRFORTUNEFS" target="_blank" aria-label="X"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
-      <a href="https://www.youtube.com/@KNRFORTUNEFS" target="_blank" aria-label="YouTube"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.instagram.com/knrfortunefs" target="_blank" aria-label="Instagram" data-tooltip="Instagram" class="ig"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a href="https://facebook.com/knrfortunefinancialservices" target="_blank" aria-label="Facebook" data-tooltip="Facebook" class="fb"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.threads.com/@knrfortunefs" target="_blank" aria-label="Threads" data-tooltip="Threads" class="th"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v10m-4-6h8"/></svg></a>
+      <a href="https://t.me/knrfortunefs" target="_blank" aria-label="Telegram" data-tooltip="Telegram" class="tg"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></a>
+      <a href="https://x.com/KNRFORTUNEFS" target="_blank" aria-label="X" data-tooltip="X (Twitter)" class="x"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+      <a href="https://www.youtube.com/@KNRFORTUNEFS" target="_blank" aria-label="YouTube" data-tooltip="YouTube" class="yt"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
     </div>
   </div>
 </section>
@@ -939,6 +972,13 @@
           <li><a href="#services">Mutual Funds</a></li>
           <li><a href="#services">Loan Services</a></li>
           <li><a href="#services">Real Estate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
         </ul>
       </div>
     </div>
