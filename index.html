@@ -168,7 +168,7 @@
   .about-cred{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 28px;}
   .cred-pill{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--cream-dark);padding:9px 16px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--navy-800);box-shadow:0 6px 16px -10px rgba(0,0,0,.2);}
   .cred-pill svg{width:16px;height:16px;color:var(--gold-500);}
-  .about-text p{color:var(--muted);margin-bottom:16px;font-size:1rem;}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:1rem;text-align:justify;}
   .about-text p.te{color:#3a4a63;}
 
   /* ---------- SERVICES ---------- */
@@ -184,7 +184,7 @@
   .svc-icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--navy-800),var(--navy-900));display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
   .svc-icon svg{width:28px;height:28px;color:var(--gold-400);}
   .svc-card h3{font-size:1.18rem;color:var(--navy-900);margin-bottom:10px;}
-  .svc-card p{color:var(--muted);font-size:.92rem;margin-bottom:8px;flex-grow:1;}
+  .svc-card p{color:var(--muted);font-size:.92rem;margin-bottom:8px;flex-grow:1;text-align:left;}
   .svc-card p.te{color:#4a5b74;font-size:.9rem;}
   .svc-pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px;}
   .svc-pill{font-size:.72rem;font-weight:600;background:var(--navy-900);color:var(--gold-300);padding:6px 12px;border-radius:999px;cursor:pointer;border:none;transition:background .2s;}
@@ -208,7 +208,7 @@
   .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .testi-card{background:var(--white);border-radius:var(--radius);padding:26px 24px;box-shadow:0 14px 30px -18px rgba(8,21,39,.25);}
   .testi-stars{color:var(--gold-500);font-size:.95rem;margin-bottom:14px;letter-spacing:2px;}
-  .testi-card p{color:var(--muted);font-size:.94rem;margin-bottom:18px;font-style:italic;}
+  .testi-card p{color:var(--muted);font-size:.94rem;margin-bottom:18px;font-style:italic;text-align:left;}
   .testi-who{display:flex;align-items:center;gap:12px;}
   .testi-avatar{width:42px;height:42px;border-radius:50%;background:var(--navy-900);color:var(--gold-400);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;}
   .testi-who b{font-size:.9rem;color:var(--navy-900);display:block;}
@@ -222,7 +222,7 @@
   #enquiry .section-sub{color:var(--muted-light);}
   .enq-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;max-width:100%;}
   .enq-wrap > *{min-width:0;}
-  .enq-side p{color:var(--muted-light);margin-bottom:22px;font-size:.96rem;overflow-wrap:break-word;word-break:break-word;}
+  .enq-side p{color:var(--muted-light);margin-bottom:22px;font-size:.96rem;overflow-wrap:break-word;word-break:break-word;text-align:justify;}
   .enq-info{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;}
   .enq-info .ic{width:42px;height:42px;border-radius:10px;background:rgba(226,197,101,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .enq-info .ic svg{width:20px;height:20px;color:var(--gold-400);}
@@ -380,6 +380,7 @@
     .floater{width:46px;height:46px;}
     .floater svg{width:20px;height:20px;}
     form#enquiryForm{padding:24px 18px;}
+    .about-text p, .enq-side p{text-align:left;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
