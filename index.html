@@ -150,8 +150,14 @@
   .hero-visual .ring{width:100%;max-width:400px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,rgba(226,197,101,.18),rgba(226,197,101,.02));border:1px solid rgba(226,197,101,.28);display:flex;align-items:center;justify-content:center;padding:26px;position:relative;}
   .hero-visual img{border-radius:50%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
   .hero-visual .float-card{position:absolute;background:var(--white);color:var(--ink);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;}
-  .hero-visual .fc1{top:6%;left:-6%;}
-  .hero-visual .fc2{bottom:8%;right:-8%;}
+  .hero-visual .fc1{top:6%;left:-6%;animation:float-badge 3.6s ease-in-out infinite;}
+  .hero-visual .fc2{bottom:8%;right:-8%;animation:float-badge 3.6s ease-in-out infinite;animation-delay:1.2s;}
+  .hero-visual .fc3{top:50%;right:-26%;background:var(--navy-900);color:var(--white);border:1px solid rgba(226,197,101,.4);animation:float-badge 3.6s ease-in-out infinite, glow-pulse 2.4s ease-in-out infinite;animation-delay:2.4s, 0s;}
+  .hero-visual .fc3 svg{color:var(--gold-400);}
+  .hero-visual .fc3 #rotating-service{display:inline-block;transition:opacity .35s ease, transform .35s ease;min-width:120px;}
+  .hero-visual .fc3 #rotating-service.fade{opacity:0;transform:translateY(4px);}
+  @keyframes float-badge{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  @keyframes glow-pulse{0%,100%{box-shadow:0 12px 28px -12px rgba(0,0,0,.5), 0 0 0 0 rgba(226,197,101,.35);}50%{box-shadow:0 12px 28px -12px rgba(0,0,0,.5), 0 0 0 8px rgba(226,197,101,0);}}
   .hero-visual .float-card svg{width:20px;height:20px;color:var(--gold-500);flex-shrink:0;}
 
   /* tree divider */
@@ -368,6 +374,7 @@
     .hamburger{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual{order:-1;max-width:280px;margin:0 auto 20px;}
+    .hero-visual .fc3{right:-8%;top:48%;padding:9px 12px;font-size:.74rem;}
     .about-grid{grid-template-columns:1fr;}
     .about-photo{max-width:340px;margin:0 auto;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
@@ -494,6 +501,7 @@
         <img src="images/logo-small.png" alt="KNR Fortune Financial Services">
         <div class="float-card fc1"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg> Quick Claims Support</div>
         <div class="float-card fc2"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg> Trusted Expertise</div>
+        <div class="float-card fc3"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> <span id="rotating-service">Life Insurance</span></div>
       </div>
     </div>
   </div>
@@ -1116,6 +1124,23 @@
           el.classList.remove('fade');
         }, 400);
       }, 2600);
+    }
+  })();
+
+  // rotating floating service badge near logo
+  (function(){
+    const services = ["Life Insurance", "Health Insurance", "Motor Insurance", "Mutual Funds", "Loan Services", "Real Estate"];
+    const el = document.getElementById('rotating-service');
+    let i = 0;
+    if(el){
+      setInterval(() => {
+        el.classList.add('fade');
+        setTimeout(() => {
+          i = (i + 1) % services.length;
+          el.textContent = services[i];
+          el.classList.remove('fade');
+        }, 350);
+      }, 2000);
     }
   })();
 
