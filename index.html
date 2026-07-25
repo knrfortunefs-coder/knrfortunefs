@@ -147,7 +147,23 @@
   .hero-stats div b{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold-400);display:block;}
   .hero-stats div span{font-size:.78rem;color:var(--muted-light);letter-spacing:.3px;}
   .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
-  .hero-visual .ring{width:100%;max-width:400px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,rgba(226,197,101,.18),rgba(226,197,101,.02));border:1px solid rgba(226,197,101,.28);display:flex;align-items:center;justify-content:center;padding:26px;position:relative;}
+  .hero-visual .ring{width:100%;max-width:400px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,rgba(226,197,101,.18),rgba(226,197,101,.02));border:1px solid rgba(226,197,101,.28);display:flex;align-items:center;justify-content:center;padding:26px;position:relative;overflow:hidden;animation:ring-glow 2.8s ease-in-out infinite;}
+  .hero-visual .ring::after{
+    content:"";position:absolute;top:-60%;left:-150%;width:60%;height:220%;
+    background:linear-gradient(100deg, transparent 30%, rgba(255,247,214,.85) 48%, rgba(255,255,255,.95) 50%, rgba(255,247,214,.85) 52%, transparent 70%);
+    transform:rotate(18deg);
+    animation:shimmer-sweep 4.2s ease-in-out infinite;
+    pointer-events:none;z-index:2;
+  }
+  @keyframes ring-glow{
+    0%,100%{box-shadow:0 0 0 0 rgba(226,197,101,0), 0 20px 50px -20px rgba(0,0,0,.5);}
+    50%{box-shadow:0 0 32px 8px rgba(226,197,101,.5), 0 20px 50px -20px rgba(0,0,0,.5);}
+  }
+  @keyframes shimmer-sweep{
+    0%{left:-150%;}
+    45%{left:150%;}
+    100%{left:150%;}
+  }
   .hero-visual img{border-radius:50%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
   .hero-visual .float-card{position:absolute;background:var(--white);color:var(--ink);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;}
   .hero-visual .fc1{top:6%;left:-6%;animation:float-badge 3.6s ease-in-out infinite;}
@@ -374,6 +390,8 @@
     .hamburger{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual{order:-1;max-width:280px;margin:0 auto 56px;}
+    .hero-visual .fc1{top:-4%;left:-14%;padding:9px 14px;font-size:.74rem;white-space:nowrap;}
+    .hero-visual .fc2{bottom:2%;right:-16%;padding:9px 14px;font-size:.74rem;white-space:nowrap;}
     .hero-visual .fc3{right:0;left:0;margin:0 auto;width:fit-content;top:auto;bottom:-52px;padding:9px 14px;font-size:.74rem;white-space:nowrap;}
     .about-grid{grid-template-columns:1fr;}
     .about-photo{max-width:340px;margin:0 auto;}
