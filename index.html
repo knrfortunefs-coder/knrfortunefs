@@ -191,6 +191,23 @@
   .svc-pill:hover{background:var(--navy-700);}
   .svc-card .btn{margin-top:auto;width:100%;}
 
+  /* ---------- MF AWARENESS ---------- */
+  #mf-awareness{background:linear-gradient(155deg,var(--navy-800) 0%,var(--navy-900) 60%);color:var(--white);position:relative;overflow:hidden;}
+  #mf-awareness .eyebrow{color:var(--gold-400);}
+  #mf-awareness .section-title{color:var(--white);}
+  #mf-awareness .section-sub{color:var(--muted-light);}
+  .mf-points{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:44px 0 44px;}
+  .mf-point{background:rgba(255,255,255,.05);border:1px solid rgba(226,197,101,.18);border-radius:14px;padding:26px 22px;text-align:center;transition:transform .25s ease, background .25s ease;}
+  .mf-point:hover{transform:translateY(-4px);background:rgba(255,255,255,.09);}
+  .mf-point .mf-icon{width:52px;height:52px;border-radius:50%;background:rgba(226,197,101,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .mf-point .mf-icon svg{width:24px;height:24px;color:var(--gold-400);}
+  .mf-point h4{font-size:1rem;color:var(--white);margin-bottom:8px;}
+  .mf-point p{font-size:.85rem;color:var(--muted-light);margin:0;}
+  .mf-cta-box{background:rgba(226,197,101,.08);border:1px solid rgba(226,197,101,.3);border-radius:18px;padding:34px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .mf-cta-box .mf-cta-text b{display:block;color:var(--white);font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:6px;}
+  .mf-cta-box .mf-cta-text span{color:var(--muted-light);font-size:.88rem;}
+  .mf-disclaimer{margin-top:28px;font-size:.74rem;color:var(--muted-light);text-align:center;opacity:.75;max-width:700px;margin-left:auto;margin-right:auto;}
+
   /* ---------- WHY CHOOSE ---------- */
   #why{background:var(--navy-900);color:var(--white);position:relative;overflow:hidden;}
   #why .section-title, #why .eyebrow{color:var(--white);}
@@ -353,6 +370,7 @@
     .about-photo{max-width:340px;margin:0 auto;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:repeat(2,1fr);}
+    .mf-points{grid-template-columns:repeat(2,1fr);}
     .testi-grid{grid-template-columns:repeat(2,1fr);}
     .enq-wrap{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
@@ -364,6 +382,8 @@
     .section{padding:70px 0;}
     .svc-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
+    .mf-points{grid-template-columns:1fr;}
+    .mf-cta-box{flex-direction:column;text-align:center;padding:28px 22px;}
     .form-row{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .gallery-item{height:200px;}
@@ -515,6 +535,7 @@
       <div class="partner-chip"><img src="https://i.postimg.cc/KRw4cRBf/Adani-Finance-Rebrand-Grey-BK-2048x1024.jpg" alt="Adani Finance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/mcGDMJdF/Axis-Max-Life-Insurance-logo-svg.png" alt="Axis Max Life Insurance"></div>
       <div class="partner-chip"><img src="https://i.ibb.co/CKxrStT1/cdnlogo-com-lic-logo.png" alt="LIC"></div>
+      <div class="partner-chip"><img src="https://i.ibb.co/GvX2NggQ/njwealth-logo.gif" alt="NJ Wealth"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/WFN1YrcN/Care-Health-Insurance-Walk-in-Recruitment.png" alt="Care Health Insurance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/8FBCb43X/CSC.png" alt="CSC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/pphXSR4F/CSC-LOAN-BAZAR.jpg" alt="CSC Loan Bazar"></div>
@@ -544,6 +565,7 @@
       <div class="partner-chip"><img src="https://i.postimg.cc/KRw4cRBf/Adani-Finance-Rebrand-Grey-BK-2048x1024.jpg" alt="Adani Finance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/mcGDMJdF/Axis-Max-Life-Insurance-logo-svg.png" alt="Axis Max Life Insurance"></div>
       <div class="partner-chip"><img src="https://i.ibb.co/CKxrStT1/cdnlogo-com-lic-logo.png" alt="LIC"></div>
+      <div class="partner-chip"><img src="https://i.ibb.co/GvX2NggQ/njwealth-logo.gif" alt="NJ Wealth"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/WFN1YrcN/Care-Health-Insurance-Walk-in-Recruitment.png" alt="Care Health Insurance"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/8FBCb43X/CSC.png" alt="CSC"></div>
       <div class="partner-chip"><img src="https://i.postimg.cc/pphXSR4F/CSC-LOAN-BAZAR.jpg" alt="CSC Loan Bazar"></div>
@@ -627,6 +649,7 @@
         <p class="te">మీ డబ్బుకు క్రమశిక్షణతో కూడిన వృద్ధి.</p>
         <p>AMFI-certified guidance on SIPs, mutual funds and investment planning to grow long-term wealth.</p>
         <a href="https://wa.me/919247475754?text=Hi%2C%20I%27m%20interested%20in%20Mutual%20Funds%20%26%20Investments" target="_blank" class="btn btn-navy btn-sm">Enquire on WhatsApp</a>
+        <a href="#mf-awareness" style="display:block;text-align:center;margin-top:10px;font-size:.78rem;color:var(--navy-800);font-weight:600;text-decoration:underline;">Learn about SIP &amp; Mutual Funds ↓</a>
       </div>
 
       <!-- Loan Services -->
@@ -661,6 +684,53 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ============ MF AWARENESS ============ -->
+<section id="mf-awareness" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Mutual Fund Awareness · మ్యూచువల్ ఫండ్స్ అవగాహన</div>
+      <h2 class="section-title">Start Your Wealth Creation Journey</h2>
+      <p class="section-sub">తక్కువ మొత్తంతో ప్రారంభించి, క్రమశిక్షణతో పెట్టుబడి పెడితే మ్యూచువల్ ఫండ్స్ మీ దీర్ఘకాలిక సంపదను నిర్మించగలవు. Whether you're just starting out or already investing, understanding the basics helps you make better decisions.</p>
+    </div>
+
+    <div class="mf-points">
+      <div class="mf-point reveal">
+        <div class="mf-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Power of Compounding</h4>
+        <p class="te">చిన్న SIP కూడా సంవత్సరాలుగా పెద్ద సంపదగా మారుతుంది.</p>
+      </div>
+      <div class="mf-point reveal">
+        <div class="mf-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h4>SIP Discipline</h4>
+        <p>Investing a fixed amount every month builds a healthy, stress-free investing habit.</p>
+      </div>
+      <div class="mf-point reveal">
+        <div class="mf-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-6 4 3 5-8"/></svg></div>
+        <h4>Diversification</h4>
+        <p class="te">మీ పెట్టుబడిని వివిధ రంగాలలో పంచడం వల్ల రిస్క్ తగ్గుతుంది.</p>
+      </div>
+      <div class="mf-point reveal">
+        <div class="mf-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>Professionally Managed</h4>
+        <p>Expert fund managers handle the research and rebalancing, so you don't have to.</p>
+      </div>
+    </div>
+
+    <div class="mf-cta-box reveal">
+      <div class="mf-cta-text">
+        <b>Ready to begin your Mutual Fund journey?</b>
+        <span>మీ NJ Wealth ఖాతాను ఈరోజే ప్రారంభించండి — Create your NJ Wealth account in a few simple steps.</span>
+      </div>
+      <a href="http://p.njw.bz/34413" target="_blank" class="btn btn-gold">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-6 4 3 5-8"/></svg>
+        Create NJ Wealth Account
+      </a>
+    </div>
+
+    <p class="mf-disclaimer">Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. KNR Fortune Financial Services helps you understand and access these products through our AMFI-registered partner network.</p>
   </div>
 </section>
 
