@@ -134,6 +134,8 @@
   .hero-badge span.dot{width:7px;height:7px;border-radius:50%;background:var(--gold-400);display:inline-block;box-shadow:0 0 0 4px rgba(226,197,101,.2);}
   #hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);color:var(--white);margin-bottom:20px;font-weight:700;}
   #hero h1 .gold{color:var(--gold-400);}
+  #rotating-word{display:inline-block;transition:opacity .4s ease, transform .4s ease;}
+  #rotating-word.fade{opacity:0;transform:translateY(6px);}
   #hero .hero-te{font-size:clamp(1.5rem,3vw,2rem);color:var(--gold-300);font-weight:600;margin-bottom:18px;display:block;}
   #hero p.lead{color:var(--muted-light);font-size:1.06rem;max-width:520px;margin-bottom:14px;}
   #hero p.lead.te{color:#cdd8ea;}
@@ -460,7 +462,7 @@
     <div>
       <div class="hero-badge"><span class="dot"></span> Andhra Pradesh &amp; Telangana వ్యాప్తంగా సేవలు</div>
       <span class="hero-te te">మీ కుటుంబానికి రక్షణ. మీ సంపదకు వృద్ధి.</span>
-      <h1>Trusted Insurance &amp; <span class="gold">Financial Advisory</span> Partner</h1>
+      <h1>Trusted <span id="rotating-word" class="gold">Financial Advisory</span> Partner</h1>
       <p class="lead">Life, Health &amp; Motor Insurance నుండి Mutual Funds, Loans, Real Estate వరకు — ఒకే గొడుగు కింద మీ ఆర్థిక భవిష్యత్తుకు సరైన మార్గదర్శకత్వం.</p>
       <div class="advisor-line">
         <svg width="30" height="30" fill="none" stroke="#e2c565" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -1099,6 +1101,23 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // rotating hero headline word
+  (function(){
+    const words = ["Insurance & Financial Advisory", "Life Insurance", "Health Insurance", "Motor Insurance", "Mutual Fund Investment", "Loan Services", "Real Estate"];
+    const el = document.getElementById('rotating-word');
+    let i = 0;
+    if(el){
+      setInterval(() => {
+        el.classList.add('fade');
+        setTimeout(() => {
+          i = (i + 1) % words.length;
+          el.textContent = words[i];
+          el.classList.remove('fade');
+        }, 400);
+      }, 2600);
+    }
+  })();
 
   // navbar scroll state
   const nav = document.getElementById('navbar');
