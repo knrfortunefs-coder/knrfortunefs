@@ -149,13 +149,13 @@
   .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
   .hero-visual-wrap{display:flex;flex-direction:column;align-items:center;width:100%;}
   .service-pill{
-    margin-top:24px;display:inline-flex;align-items:center;gap:10px;
-    background:var(--navy-900);color:var(--white);border:1px solid rgba(226,197,101,.4);
-    border-radius:999px;padding:11px 22px;font-size:.85rem;font-weight:600;
-    box-shadow:0 12px 28px -12px rgba(0,0,0,.5);max-width:100%;
+    margin-top:28px;display:inline-flex;align-items:center;gap:14px;
+    background:var(--navy-900);color:var(--white);border:2px solid rgba(226,197,101,.5);
+    border-radius:999px;padding:20px 40px;font-size:1.3rem;font-weight:700;
+    box-shadow:0 16px 36px -12px rgba(0,0,0,.6);max-width:100%;
   }
-  .service-pill svg{width:18px;height:18px;color:var(--gold-400);flex-shrink:0;}
-  .service-pill #rotating-service{display:inline-block;transition:opacity .35s ease, transform .35s ease;min-width:110px;text-align:left;}
+  .service-pill svg{width:28px;height:28px;color:var(--gold-400);flex-shrink:0;}
+  .service-pill #rotating-service{display:inline-block;transition:opacity .35s ease, transform .35s ease;min-width:180px;text-align:left;}
   .service-pill #rotating-service.fade{opacity:0;transform:translateY(4px);}
   .hero-visual .ring{width:100%;max-width:400px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,rgba(226,197,101,.18),rgba(226,197,101,.02));border:1px solid rgba(226,197,101,.28);display:flex;align-items:center;justify-content:center;padding:26px;position:relative;overflow:hidden;animation:ring-glow 2.8s ease-in-out infinite;}
   .hero-visual .ring::after{
@@ -394,7 +394,9 @@
     .hamburger{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
     .hero-visual-wrap{order:-1;max-width:280px;margin:0 auto 30px;}
-    .service-pill{font-size:.76rem;padding:9px 16px;}
+    .service-pill{font-size:1.05rem;padding:15px 24px;gap:10px;}
+    .service-pill svg{width:22px;height:22px;}
+    .service-pill #rotating-service{min-width:130px;}
     .about-grid{grid-template-columns:1fr;}
     .about-photo{max-width:340px;margin:0 auto;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
