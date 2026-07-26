@@ -147,6 +147,16 @@
   .hero-stats div b{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold-400);display:block;}
   .hero-stats div span{font-size:.78rem;color:var(--muted-light);letter-spacing:.3px;}
   .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-visual-wrap{display:flex;flex-direction:column;align-items:center;width:100%;}
+  .service-pill{
+    margin-top:24px;display:inline-flex;align-items:center;gap:10px;
+    background:var(--navy-900);color:var(--white);border:1px solid rgba(226,197,101,.4);
+    border-radius:999px;padding:11px 22px;font-size:.85rem;font-weight:600;
+    box-shadow:0 12px 28px -12px rgba(0,0,0,.5);max-width:100%;
+  }
+  .service-pill svg{width:18px;height:18px;color:var(--gold-400);flex-shrink:0;}
+  .service-pill #rotating-service{display:inline-block;transition:opacity .35s ease, transform .35s ease;min-width:110px;text-align:left;}
+  .service-pill #rotating-service.fade{opacity:0;transform:translateY(4px);}
   .hero-visual .ring{width:100%;max-width:400px;aspect-ratio:1/1;border-radius:50%;background:linear-gradient(160deg,rgba(226,197,101,.18),rgba(226,197,101,.02));border:1px solid rgba(226,197,101,.28);display:flex;align-items:center;justify-content:center;padding:26px;position:relative;overflow:hidden;animation:ring-glow 2.8s ease-in-out infinite;}
   .hero-visual .ring::after{
     content:"";position:absolute;top:-60%;left:-150%;width:60%;height:220%;
@@ -383,7 +393,8 @@
     .nav-links{display:none;}
     .hamburger{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{order:-1;max-width:280px;margin:0 auto 30px;}
+    .hero-visual-wrap{order:-1;max-width:280px;margin:0 auto 30px;}
+    .service-pill{font-size:.76rem;padding:9px 16px;}
     .about-grid{grid-template-columns:1fr;}
     .about-photo{max-width:340px;margin:0 auto;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
@@ -505,9 +516,15 @@
         <div><b>IRDAI·AMFI</b><span>Certified Advisor</span></div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="ring">
-        <img src="images/logo-small.png" alt="KNR Fortune Financial Services">
+    <div class="hero-visual-wrap">
+      <div class="hero-visual">
+        <div class="ring">
+          <img src="images/logo-small.png" alt="KNR Fortune Financial Services">
+        </div>
+      </div>
+      <div class="service-pill">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="rotating-service">Life Insurance</span>
       </div>
     </div>
   </div>
@@ -1130,6 +1147,23 @@
           el.classList.remove('fade');
         }, 400);
       }, 2600);
+    }
+  })();
+
+  // rotating service pill below logo
+  (function(){
+    const services = ["Life Insurance", "Health Insurance", "Motor Insurance", "Mutual Funds", "Loan Services", "Real Estate"];
+    const el = document.getElementById('rotating-service');
+    let i = 0;
+    if(el){
+      setInterval(() => {
+        el.classList.add('fade');
+        setTimeout(() => {
+          i = (i + 1) % services.length;
+          el.textContent = services[i];
+          el.classList.remove('fade');
+        }, 350);
+      }, 2000);
     }
   })();
 
