@@ -10,15 +10,23 @@
 <meta property="og:description" content="Trusted Insurance &amp; Financial Advisory Partner in Andhra Pradesh &amp; Telangana. Life, Health, Motor Insurance | Mutual Funds | Loans | Real Estate.">
 <link rel="icon" type="image/png" href="images/logo-small.png">
 <script>
-  // Image fallback: try the local copy first, then the backup URL, then hide the tile
+  // Image fallback: local copy first, then backup URL, then a safe placeholder (never hide the gallery)
   function imgFallback(img){
     var fb = img.getAttribute('data-fallback');
     if(fb && !img.dataset.triedFb){
       img.dataset.triedFb = '1';
       img.src = fb;
-    } else {
-      var box = img.closest('.gallery-item, .partner-chip');
-      if(box) box.style.display = 'none';
+      return;
+    }
+    img.onerror = null;
+    var chip = img.closest('.partner-chip');
+    if(chip){ chip.style.display = 'none'; return; }
+    var tile = img.closest('.gallery-item');
+    if(tile){
+      img.src = 'images/logo-small.png';
+      img.style.padding = '18%';
+      tile.style.pointerEvents = 'none';
+      tile.classList.add('img-failed');
     }
   }
 </script>
