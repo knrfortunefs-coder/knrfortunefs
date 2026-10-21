@@ -10,10 +10,33 @@
 <meta property="og:description" content="Trusted Insurance &amp; Financial Advisory Partner in Andhra Pradesh &amp; Telangana. Life, Health, Motor Insurance | Mutual Funds | Loans | Real Estate.">
 <link rel="icon" type="image/png" href="images/logo-small.png">
 <script>
-  // Image fallback: local copy first, then backup URL, then a safe placeholder (never hide the gallery)
+  // Image fallback: tries several folders/extensions, then the backup URL, then a safe placeholder
   function imgFallback(img){
+    var base = img.getAttribute('data-base');
+    if(base){
+      if(!img._list){
+        var list = [];
+        ['images/gallery/','images/'].forEach(function(d){
+          ['png','jpg','jpeg','webp','PNG','JPG','JPEG'].forEach(function(e){ list.push(d + base + '.' + e); });
+        });
+        var fb0 = img.getAttribute('data-fallback');
+        if(fb0) list.push(fb0);
+        img._list = list; img._i = 0;
+      }
+      img._i++;
+      if(img._i < img._list.length){ img.src = img._list[img._i]; return; }
+      img.onerror = null;
+      var tile = img.closest('.gallery-item');
+      if(tile){
+        img.src = 'images/logo-small.png';
+        img.style.padding = '18%';
+        tile.style.pointerEvents = 'none';
+        tile.classList.add('img-failed');
+      }
+      return;
+    }
     var fb = img.getAttribute('data-fallback');
-    if(fb && !img.dataset.triedFb){
+    if(fb && fb !== '#' && !img.dataset.triedFb){
       img.dataset.triedFb = '1';
       img.src = fb;
       return;
@@ -26,7 +49,6 @@
       img.src = 'images/logo-small.png';
       img.style.padding = '18%';
       tile.style.pointerEvents = 'none';
-      tile.classList.add('img-failed');
     }
   }
 </script>
@@ -371,6 +393,22 @@
   .coverage-strip{background:var(--navy-800);color:var(--gold-300);text-align:center;padding:14px 20px;font-size:.92rem;font-weight:600;letter-spacing:.3px;border-top:1px solid rgba(226,197,101,.15);border-bottom:1px solid rgba(226,197,101,.15);}
   .coverage-strip span.sep{color:var(--gold-500);margin:0 10px;}
 
+  /* ---------- QUICK LINKS ---------- */
+  #quick-links{background:var(--cream);padding:64px 0 24px;}
+  .ql-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .ql-card{
+    background:var(--white);border:1px solid var(--cream-dark);border-radius:var(--radius);
+    padding:28px 24px;display:flex;flex-direction:column;gap:10px;
+    box-shadow:0 14px 30px -20px rgba(8,21,39,.3);transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .ql-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .ql-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--navy-800),var(--navy-900));display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+  .ql-icon svg{width:26px;height:26px;color:var(--gold-400);}
+  .ql-tag{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(201,162,39,.16);color:#8a6d12;padding:4px 10px;border-radius:999px;}
+  .ql-card h3{font-size:1.12rem;color:var(--navy-900);}
+  .ql-card p{font-size:.9rem;color:var(--muted);margin:0;flex-grow:1;}
+  .ql-card .btn{width:100%;margin-top:8px;}
+
   /* ---------- PARTNERS ---------- */
   #partners{background:var(--navy-900);padding:60px 0 50px;overflow:hidden;}
   #partners .section-head{margin-bottom:30px;}
@@ -422,6 +460,7 @@
     .about-photo{max-width:340px;margin:0 auto;}
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:repeat(2,1fr);}
+    .ql-grid{grid-template-columns:repeat(2,1fr);}
     .mf-points{grid-template-columns:repeat(2,1fr);}
     .testi-grid{grid-template-columns:repeat(2,1fr);}
     .enq-wrap{grid-template-columns:1fr;}
@@ -434,6 +473,7 @@
     .section{padding:70px 0;}
     .svc-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
+    .ql-grid{grid-template-columns:1fr;}
     .mf-points{grid-template-columns:1fr;}
     .mf-cta-box{flex-direction:column;text-align:center;padding:28px 22px;}
     .form-row{grid-template-columns:1fr;}
@@ -556,6 +596,56 @@
 <div class="coverage-strip">
   🌐 Serving clients across <strong>Andhra Pradesh &amp; Telangana</strong><span class="sep">·</span>తెలుగు మరియు English రెండింటిలో మాట్లాడతాము
 </div>
+
+<!-- ============ QUICK LINKS ============ -->
+<section id="quick-links">
+  <div class="container">
+    <div class="section-head center reveal" style="margin-bottom:34px;">
+      <div class="eyebrow">Quick Links · త్వరిత లింకులు</div>
+      <h2 class="section-title">Start Instantly — Right From Your Mobile</h2>
+      <p class="section-sub">మీ ఫోన్ లేదా కంప్యూటర్ నుండే మీరే సులభంగా పూర్తి చేయండి. Open your account or buy your vehicle policy yourself in a few minutes.</p>
+    </div>
+    <div class="ql-grid">
+
+      <div class="ql-card reveal">
+        <div class="ql-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-6 4 3 5-8"/></svg></div>
+        <span class="ql-tag">Free</span>
+        <h3>Free Mutual Fund Account</h3>
+        <p class="te">ఉచితంగా మ్యూచువల్ ఫండ్ ఖాతా తెరవండి.</p>
+        <p>Open your NJ Wealth account online at no cost and start investing with SIPs.</p>
+        <a href="http://p.njw.bz/34413" target="_blank" rel="noopener" class="btn btn-gold btn-sm">Open Free Account</a>
+      </div>
+
+      <div class="ql-card reveal">
+        <div class="ql-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l3-7h5l4 7M9 10l-1-3H6M14 10l-1.5-4"/></svg></div>
+        <span class="ql-tag">Direct · Instant</span>
+        <h3>Two Wheeler Insurance</h3>
+        <p class="te">బైక్ ఇన్సూరెన్స్ — మీరే నేరుగా తీసుకోండి.</p>
+        <p>Buy or renew your bike policy directly on your own phone, with no waiting.</p>
+        <a href="https://tinyurl.com/Get-TW-Insurance" target="_blank" rel="noopener" class="btn btn-navy btn-sm" id="ql-two-wheeler">Get Two Wheeler Policy</a>
+      </div>
+
+      <div class="ql-card reveal">
+        <div class="ql-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 6M5 13h14v5H5z"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></div>
+        <span class="ql-tag">Direct · Instant</span>
+        <h3>Four Wheeler Insurance</h3>
+        <p class="te">కారు ఇన్సూరెన్స్ — మీరే నేరుగా తీసుకోండి.</p>
+        <p>Buy or renew your car policy directly on your own phone or computer.</p>
+        <a href="https://tinyurl.com/ykevzxm9" target="_blank" rel="noopener" class="btn btn-navy btn-sm" id="ql-four-wheeler">Get Four Wheeler Policy</a>
+      </div>
+
+      <div class="ql-card reveal">
+        <div class="ql-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <span class="ql-tag">Enquiry</span>
+        <h3>Care Health Insurance</h3>
+        <p class="te">కేర్ హెల్త్ ఇన్సూరెన్స్ — ఇక్కడే ఎంక్వైరీ చేయండి.</p>
+        <p>Send your health insurance enquiry directly through our Care Insurance advisor page.</p>
+        <a href="https://advisor.careinsurance.com/hp/KUMDERLAVIMALA" target="_blank" rel="noopener" class="btn btn-navy btn-sm">Care Insurance Enquiry</a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <div class="tree-divider">
   <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
@@ -848,25 +938,22 @@
     </div>
 
     <div class="gallery-grid">
-      
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/01.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 1" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/02.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 2" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/03.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 3" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/04.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 4" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/05.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 5" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/06.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 6" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/07.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/08.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/09.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/10.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/11.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/12.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/13.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-       <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/14.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-       <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/15.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-       <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img src="images/gallery/16.png" data-fallback="#" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-       
-      
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="01" src="images/gallery/01.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 1" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="02" src="images/gallery/02.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 2" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="03" src="images/gallery/03.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 3" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="04" src="images/gallery/04.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 4" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="05" src="images/gallery/05.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 5" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="06" src="images/gallery/06.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 6" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="07" src="images/gallery/07.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="08" src="images/gallery/08.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 8" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="09" src="images/gallery/09.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 9" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="10" src="images/gallery/10.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 10" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="11" src="images/gallery/11.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 11" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="12" src="images/gallery/12.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 12" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="13" src="images/gallery/13.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 13" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="14" src="images/gallery/14.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 14" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="15" src="images/gallery/15.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 15" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="16" src="images/gallery/16.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 16" loading="lazy"></div>
     </div>
 
     <h3 class="gallery-shorts-title reveal">Watch Our Latest Videos</h3>
