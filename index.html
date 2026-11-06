@@ -10,29 +10,25 @@
 <meta property="og:description" content="Trusted Insurance &amp; Financial Advisory Partner in Andhra Pradesh &amp; Telangana. Life, Health, Motor Insurance | Mutual Funds | Loans | Real Estate.">
 <link rel="icon" type="image/png" href="images/logo-small.png">
 <script>
-  // Image fallback: tries several folders/extensions, then the backup URL, then a safe placeholder
+  // Image fallback: tries other file types/folders, then a backup URL, then a safe placeholder (never hides the gallery)
   function imgFallback(img){
     var base = img.getAttribute('data-base');
     if(base){
       if(!img._list){
-        var list = [];
+        var cur = img.getAttribute('src'), list = [];
         ['images/gallery/','images/'].forEach(function(d){
-          ['png','jpg','jpeg','webp','PNG','JPG','JPEG'].forEach(function(e){ list.push(d + base + '.' + e); });
+          ['jpg','png','jpeg','webp','JPG','PNG','JPEG'].forEach(function(x){
+            var u = d + base + '.' + x; if(u !== cur) list.push(u);
+          });
         });
         var fb0 = img.getAttribute('data-fallback');
-        if(fb0) list.push(fb0);
+        if(fb0 && fb0 !== '#') list.push(fb0);
         img._list = list; img._i = 0;
       }
-      img._i++;
-      if(img._i < img._list.length){ img.src = img._list[img._i]; return; }
+      if(img._i < img._list.length){ img.src = img._list[img._i++]; return; }
       img.onerror = null;
-      var tile = img.closest('.gallery-item');
-      if(tile){
-        img.src = 'images/logo-small.png';
-        img.style.padding = '18%';
-        tile.style.pointerEvents = 'none';
-        tile.classList.add('img-failed');
-      }
+      var tile0 = img.closest('.gallery-item');
+      if(tile0){ img.src = 'images/logo-small.png'; img.style.padding = '18%'; tile0.style.pointerEvents = 'none'; }
       return;
     }
     var fb = img.getAttribute('data-fallback');
@@ -45,11 +41,7 @@
     var chip = img.closest('.partner-chip');
     if(chip){ chip.style.display = 'none'; return; }
     var tile = img.closest('.gallery-item');
-    if(tile){
-      img.src = 'images/logo-small.png';
-      img.style.padding = '18%';
-      tile.style.pointerEvents = 'none';
-    }
+    if(tile){ img.src = 'images/logo-small.png'; img.style.padding = '18%'; tile.style.pointerEvents = 'none'; }
   }
 </script>
 <link rel="manifest" href="manifest.json">
@@ -448,9 +440,40 @@
   .floaters-left.hide{opacity:0;pointer-events:none;}
   .fl-pill{display:inline-flex;align-items:center;gap:10px;background:var(--navy-900);color:var(--white);border:1.5px solid rgba(226,197,101,.55);border-radius:999px;padding:9px 18px 9px 10px;font-size:.84rem;font-weight:600;box-shadow:0 12px 28px -8px rgba(0,0,0,.45);transition:transform .25s ease;}
   .fl-pill:hover{transform:translateY(-2px);}
+  .floaters-left{gap:0;}
+  .fl-menu{display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-height:0;opacity:0;overflow:hidden;visibility:hidden;pointer-events:none;transition:max-height .3s ease, opacity .25s ease, margin .3s ease, visibility 0s linear .3s;}
+  .floaters-left.open .fl-menu{max-height:380px;opacity:1;visibility:visible;pointer-events:auto;margin-bottom:12px;transition:max-height .3s ease, opacity .25s ease, margin .3s ease, visibility 0s;}
+  .fl-toggle{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-900);border:none;border-radius:999px;padding:9px 20px 9px 10px;font-family:'Poppins',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;box-shadow:0 12px 28px -8px rgba(0,0,0,.45);}
+  .fl-toggle-ic{width:32px;height:32px;border-radius:50%;background:var(--navy-900);color:var(--gold-400);display:flex;align-items:center;justify-content:center;transition:transform .25s ease;}
+  .fl-toggle-ic svg{width:16px;height:16px;}
+  .floaters-left.open .fl-toggle-ic{transform:rotate(45deg);}
   .fl-short{display:none;}
   .fl-ic{width:36px;height:36px;border-radius:50%;background:var(--gold-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .fl-ic svg{width:20px;height:20px;color:var(--navy-900);}
+
+  /* ---------- HOW IT WORKS ---------- */
+  #how{background:var(--white);}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .how-step{text-align:center;padding:30px 24px;background:var(--cream);border:1px solid var(--cream-dark);border-radius:var(--radius);}
+  .how-num{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-900);font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 10px 22px -10px rgba(201,162,39,.7);}
+  .how-step h3{font-size:1.15rem;color:var(--navy-900);margin-bottom:8px;}
+  .how-step p{font-size:.9rem;color:var(--muted);margin-bottom:6px;}
+
+  /* ---------- FAQ ---------- */
+  #faq{background:var(--white);}
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+  .faq-item{background:var(--cream);border:1px solid var(--cream-dark);border-radius:12px;overflow:hidden;}
+  .faq-item summary{cursor:pointer;list-style:none;padding:18px 54px 18px 22px;font-weight:600;color:var(--navy-900);font-size:.98rem;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--gold-500);}
+  .faq-item[open] summary::after{content:"\2013";}
+  .faq-a{padding:0 22px 16px;}
+  .faq-a p{font-size:.92rem;color:var(--muted);margin-bottom:8px;}
+
+  /* ---------- FOOTER DISCLAIMER ---------- */
+  .footer-disclaimer{border-top:1px solid rgba(255,255,255,.08);padding:20px 0 22px;text-align:center;}
+  .footer-disclaimer p{font-size:.78rem;color:var(--muted-light);margin-bottom:4px;line-height:1.7;}
+  .footer-disclaimer strong{color:var(--gold-300);font-weight:600;}
 
   /* reveal animation */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
@@ -470,6 +493,7 @@
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:repeat(2,1fr);}
     .ql-grid{grid-template-columns:repeat(2,1fr);}
+    .how-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;}
     .mf-points{grid-template-columns:repeat(2,1fr);}
     .testi-grid{grid-template-columns:repeat(2,1fr);}
     .enq-wrap{grid-template-columns:1fr;}
@@ -497,7 +521,9 @@
     .contact-grid{gap:16px;}
     .contact-card{padding:24px 20px;}
     .social-row{flex-wrap:wrap;row-gap:14px;}
-    .floaters-left{bottom:16px;left:10px;gap:8px;}
+    .floaters-left{bottom:16px;left:10px;gap:0;}
+    .fl-toggle{padding:6px 14px 6px 7px;font-size:.76rem;gap:8px;}
+    .fl-toggle-ic{width:26px;height:26px;}
     .fl-pill{padding:6px 12px 6px 7px;font-size:.72rem;gap:7px;}
     .fl-long{display:none;}
     .fl-short{display:inline;}
@@ -513,6 +539,62 @@
     *{animation:none !important; transition:none !important;}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which services do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Life, Health and Motor Insurance; Mutual Funds & Investments; Loans (personal, business, home, gold, vehicle and against property); and Real Estate (farm lands, open plots and apartments)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is opening a mutual fund account free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, opening an account through our NJ Wealth link is free. Mutual Fund investments are subject to market risks, so please read all scheme-related documents carefully."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I buy two-wheeler or car insurance myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the Get TW Insurance or Get Car Insurance links to complete it yourself on your phone or computer. If you would like help choosing, just WhatsApp us."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which documents will I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the product. Usually an ID proof, address proof and a few basic details are needed. We will tell you the exact list when you enquire."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you help me at the time of a claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Call or WhatsApp us on +91 92474 75754 and we will guide you through the claim process with your insurer. Final claim decisions are taken by the insurance company."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which areas do you serve, and in which languages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve clients across Andhra Pradesh and Telangana, and we speak both Telugu and English."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -756,6 +838,7 @@
       <div class="about-cred">
         <div class="cred-pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 21l4-3 4 3-1-5.5"/></svg> IRDAI Certified</div>
         <div class="cred-pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 21l4-3 4 3-1-5.5"/></svg> AMFI Certified</div>
+        <div class="cred-pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg> AMFI Regn. No: ARN-339241</div>
         <div class="cred-pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg> 9+ Years Experience</div>
       </div>
       <div class="about-text">
@@ -893,7 +976,7 @@
       </a>
     </div>
 
-    <p class="mf-disclaimer">Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. KNR Fortune Financial Services helps you understand and access these products through our AMFI-registered partner network.</p>
+    <p class="mf-disclaimer">Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. KNR Fortune Financial Services helps you understand and access these products through our AMFI-registered partner network. AMFI Registration No. (Mutual Funds): ARN-339241.</p>
   </div>
 </section>
 
@@ -939,6 +1022,37 @@
   </div>
 </section>
 
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">How It Works · ఎలా పని చేస్తుంది</div>
+      <h2 class="section-title">Three Simple Steps</h2>
+      <p class="section-sub">మూడు సులభమైన దశల్లో మీ ఆర్థిక భద్రత — from first enquiry to ongoing support.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-num">1</div>
+        <h3>Enquire</h3>
+        <p class="te">WhatsApp, కాల్ లేదా ఫారం ద్వారా సంప్రదించండి.</p>
+        <p>Reach us on WhatsApp, by phone, or through the enquiry form.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">2</div>
+        <h3>Compare</h3>
+        <p class="te">మా భాగస్వామి సంస్థల ఆప్షన్లను పోల్చి చూపిస్తాము.</p>
+        <p>We compare options from our partner companies and suggest what fits you.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-num">3</div>
+        <h3>Get Started</h3>
+        <p class="te">తక్కువ పేపర్‌వర్క్, ఆ తర్వాత కూడా మా మద్దతు.</p>
+        <p>Minimal paperwork, and support from us after you begin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ GALLERY ============ -->
 <section id="gallery" class="section">
   <div class="container">
@@ -953,22 +1067,22 @@
     </div>
 
     <div class="gallery-grid">
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="01" src="images/gallery/01.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 1" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="02" src="images/gallery/02.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 2" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="03" src="images/gallery/03.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 3" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="04" src="images/gallery/04.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 4" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="05" src="images/gallery/05.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 5" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="06" src="images/gallery/06.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 6" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="07" src="images/gallery/07.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="08" src="images/gallery/08.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 8" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="09" src="images/gallery/09.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 9" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="10" src="images/gallery/10.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 10" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="11" src="images/gallery/11.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 11" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="12" src="images/gallery/12.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 12" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="13" src="images/gallery/13.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 13" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="14" src="images/gallery/14.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 14" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="15" src="images/gallery/15.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 15" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="16" src="images/gallery/16.png" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 16" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="01" src="images/gallery/01.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 1" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="02" src="images/gallery/02.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 2" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="03" src="images/gallery/03.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 3" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="04" src="images/gallery/04.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 4" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="05" src="images/gallery/05.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 5" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="06" src="images/gallery/06.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 6" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="07" src="images/gallery/07.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 7" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="08" src="images/gallery/08.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 8" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="09" src="images/gallery/09.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 9" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="10" src="images/gallery/10.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 10" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="11" src="images/gallery/11.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 11" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="12" src="images/gallery/12.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 12" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="13" src="images/gallery/13.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 13" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="14" src="images/gallery/14.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 14" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="15" src="images/gallery/15.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 15" loading="lazy"></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this.querySelector('img').currentSrc)"><img data-base="16" src="images/gallery/16.jpg" onerror="imgFallback(this)" alt="KNR Fortune Financial Services poster 16" loading="lazy"></div>
     </div>
 
     <h3 class="gallery-shorts-title reveal">Watch Our Latest Videos</h3>
@@ -1103,6 +1217,42 @@
   </div>
 </section>
 
+<!-- ============ FAQ ============ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">FAQ · తరచుగా అడిగే ప్రశ్నలు</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>Which services do you offer?</summary>
+        <div class="faq-a"><p>Life, Health and Motor Insurance; Mutual Funds & Investments; Loans (personal, business, home, gold, vehicle and against property); and Real Estate (farm lands, open plots and apartments).</p><p class="te">లైఫ్, హెల్త్, మోటార్ ఇన్సూరెన్స్, మ్యూచువల్ ఫండ్స్, లోన్లు, రియల్ ఎస్టేట్ — అన్నీ ఒకే చోట.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is opening a mutual fund account free?</summary>
+        <div class="faq-a"><p>Yes, opening an account through our NJ Wealth link is free. Mutual Fund investments are subject to market risks, so please read all scheme-related documents carefully.</p><p class="te">మా NJ Wealth లింక్ ద్వారా ఖాతా తెరవడం ఉచితం.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can I buy two-wheeler or car insurance myself?</summary>
+        <div class="faq-a"><p>Yes. Use the Get TW Insurance or Get Car Insurance links to complete it yourself on your phone or computer. If you would like help choosing, just WhatsApp us.</p><p class="te">బైక్ లేదా కారు ఇన్సూరెన్స్ మీ ఫోన్ నుండే మీరే తీసుకోవచ్చు — సహాయం కావాలంటే WhatsApp చేయండి.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Which documents will I need?</summary>
+        <div class="faq-a"><p>It depends on the product. Usually an ID proof, address proof and a few basic details are needed. We will tell you the exact list when you enquire.</p><p class="te">ఉత్పత్తిని బట్టి డాక్యుమెంట్లు మారుతాయి — మీరు సంప్రదించినప్పుడు పూర్తి జాబితా చెబుతాము.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Will you help me at the time of a claim?</summary>
+        <div class="faq-a"><p>Yes. Call or WhatsApp us on +91 92474 75754 and we will guide you through the claim process with your insurer. Final claim decisions are taken by the insurance company.</p><p class="te">క్లెయిమ్ సమయంలో మేము మీకు మార్గదర్శకత్వం అందిస్తాము.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Which areas do you serve, and in which languages?</summary>
+        <div class="faq-a"><p>We serve clients across Andhra Pradesh and Telangana, and we speak both Telugu and English.</p><p class="te">ఆంధ్రప్రదేశ్ మరియు తెలంగాణ అంతటా — తెలుగు మరియు English రెండింటిలో.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ENQUIRY ============ -->
 <section id="enquiry" class="section">
   <div class="container enq-wrap">
@@ -1226,6 +1376,7 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#enquiry">Enquiry</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -1248,6 +1399,10 @@
         </ul>
       </div>
     </div>
+    <div class="footer-disclaimer">
+      <p><strong>Mutual Funds — AMFI Registration No.: ARN-339241</strong></p>
+      <p>Insurance is the subject matter of solicitation. Mutual Fund investments are subject to market risks; read all scheme-related documents carefully.</p>
+    </div>
     <div class="footer-bottom">
       <span>&copy; <span id="year"></span> KNR Fortune Financial Services. All rights reserved.</span>
       <span>Designed for Nagaraju Kunderla, M.Com — Insurance &amp; Financial Advisor</span>
@@ -1266,24 +1421,30 @@
   </a>
 </div>
 
-<!-- ============ LEFT FLOATING INSURANCE BUTTONS ============ -->
+<!-- ============ LEFT FLOATING QUICK SERVICES (expandable) ============ -->
 <div class="floaters-left" id="floatersLeft">
-  <a href="https://tinyurl.com/Get-TW-Insurance" target="_blank" rel="noopener" class="fl-pill" aria-label="Get Two Wheeler Insurance">
+  <div class="fl-menu" id="flMenu">
+    <a href="https://tinyurl.com/Get-TW-Insurance" target="_blank" rel="noopener" class="fl-pill" aria-label="Get Two Wheeler Insurance">
     <span class="fl-ic"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l3-7h5l4 7M9 10l-1-3H6M14 10l-1.5-4"/></svg></span>
     <span class="fl-long">Get TW Insurance</span><span class="fl-short">TW Insurance</span>
   </a>
-  <a href="https://tinyurl.com/ykevzxm9" target="_blank" rel="noopener" class="fl-pill" aria-label="Get Car Insurance">
+    <a href="https://tinyurl.com/ykevzxm9" target="_blank" rel="noopener" class="fl-pill" aria-label="Get Car Insurance">
     <span class="fl-ic"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 6M5 13h14v5H5z"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></span>
     <span class="fl-long">Get Car Insurance</span><span class="fl-short">Car Insurance</span>
   </a>
-  <a href="http://p.njw.bz/34413" target="_blank" rel="noopener" class="fl-pill" aria-label="Open a free Mutual Fund account">
+    <a href="http://p.njw.bz/34413" target="_blank" rel="noopener" class="fl-pill" aria-label="Open a free Mutual Fund account">
     <span class="fl-ic"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-6 4 3 5-8"/></svg></span>
     <span class="fl-long">Free Mutual Fund Account</span><span class="fl-short">Mutual Funds</span>
   </a>
-  <a href="https://advisor.careinsurance.com/hp/KUMDERLAVIMALA" target="_blank" rel="noopener" class="fl-pill" aria-label="Health Insurance enquiry">
+    <a href="https://advisor.careinsurance.com/hp/KUMDERLAVIMALA" target="_blank" rel="noopener" class="fl-pill" aria-label="Health Insurance enquiry">
     <span class="fl-ic"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
     <span class="fl-long">Health Insurance Enquiry</span><span class="fl-short">Health Insurance</span>
   </a>
+  </div>
+  <button type="button" class="fl-toggle" id="flToggle" aria-expanded="false" aria-controls="flMenu">
+    <span class="fl-toggle-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+    Quick Services
+  </button>
 </div>
 
 <script>
@@ -1348,7 +1509,19 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 
-  // hide the left buttons while Quick Links or the Enquiry form is on screen
+  // expandable Quick Services button (bottom-left)
+  (function(){
+    var fl = document.getElementById('floatersLeft');
+    var btn = document.getElementById('flToggle');
+    if(!fl || !btn) return;
+    function setOpen(o){ fl.classList.toggle('open', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+    btn.addEventListener('click', function(e){ e.stopPropagation(); setOpen(!fl.classList.contains('open')); });
+    document.addEventListener('click', function(e){ if(!fl.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+    fl._close = function(){ setOpen(false); };
+  })();
+
+  // hide the Quick Services button while Quick Links or the Enquiry form is on screen
   (function(){
     var fl = document.getElementById('floatersLeft');
     var ids = ['quick-links','enquiry'];
@@ -1358,6 +1531,7 @@
         entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting; });
         var any = ids.some(function(id){ return visible[id]; });
         fl.classList.toggle('hide', any);
+        if(any && fl._close) fl._close();
       }, { threshold: 0.05 });
       ids.forEach(function(id){ var el = document.getElementById(id); if(el) io2.observe(el); });
     }
