@@ -454,6 +454,18 @@
   .rs-logo{flex-shrink:0;width:150px;height:150px;border-radius:50%;overflow:hidden;background:var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(226,197,101,.55);}
   .rs-logo img{width:100%;height:100%;object-fit:cover;}
 
+  /* ---------- FOLLOW US BAND ---------- */
+  .follow-band{margin-top:56px;text-align:center;background:var(--white);border:1px solid var(--cream-dark);border-radius:20px;padding:36px 24px;box-shadow:0 14px 30px -22px rgba(8,21,39,.3);}
+  .follow-band h3{font-size:1.4rem;color:var(--navy-900);margin-bottom:6px;}
+  .follow-band p{color:var(--muted);font-size:.92rem;margin:0 0 22px;}
+  .follow-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+  .follow-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;color:#fff;font-weight:700;font-size:.95rem;box-shadow:0 12px 26px -12px rgba(0,0,0,.5);transition:transform .25s ease;}
+  .follow-btn:hover{transform:translateY(-3px);}
+  .follow-btn svg{width:22px;height:22px;flex-shrink:0;}
+  .follow-btn.yt{background:#FF0000;}
+  .follow-btn.ig{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);}
+  .follow-btn.fb{background:#1877F2;}
+
   /* ---------- HOW IT WORKS ---------- */
   #how{background:var(--white);}
   .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -512,6 +524,7 @@
     .ql-grid{grid-template-columns:1fr;}
     .rs-banner{flex-direction:column-reverse;text-align:center;padding:30px 22px;gap:20px;}
     .rs-logo{width:110px;height:110px;}
+    .follow-btn{width:100%;justify-content:center;}
     .rs-banner .btn{width:100%;}
     .mf-points{grid-template-columns:1fr;}
     .mf-cta-box{flex-direction:column;text-align:center;padding:28px 22px;}
@@ -1116,6 +1129,15 @@
       <div class="gallery-short reveal"><iframe src="https://www.youtube.com/embed/4YyzwRhOjWk" title="KNR Fortune video 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
       <div class="gallery-short reveal"><iframe src="https://www.youtube.com/embed/uYzxxKibkqY" title="KNR Fortune video 7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
     </div>
+    <div class="follow-band reveal">
+      <h3>Stay Connected · మమ్మల్ని ఫాలో అవ్వండి</h3>
+      <p>Subscribe and follow us for our latest videos, offers and updates.</p>
+      <div class="follow-btns">
+        <a href="https://www.youtube.com/@knrfortunefs?sub_confirmation=1" target="_blank" rel="noopener" class="follow-btn yt"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2C.5 9.1.5 12 .5 12s0 2.9.5 4.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-4.8.5-4.8s0-2.9-.5-4.8zM9.7 15.5v-7l6 3.5-6 3.5z"/></svg>Subscribe on YouTube</a>
+        <a href="https://www.instagram.com/knrfortunefs" target="_blank" rel="noopener" class="follow-btn ig"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Follow on Instagram</a>
+        <a href="https://www.facebook.com/knrfortunefinancialservices" target="_blank" rel="noopener" class="follow-btn fb"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.5-3.3h-3.2V8.6c0-.9.4-1.7 1.8-1.7h1.5V4.1S15.5 3.9 14.2 3.9c-2.7 0-4.4 1.6-4.4 4.5v2.3H7v3.3h2.8v8h3.7z"/></svg>Follow our Facebook Page</a>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -1380,11 +1402,11 @@
     </div>
     <div class="social-row">
       <a href="https://www.instagram.com/knrfortunefs" target="_blank" aria-label="Instagram" data-tooltip="Instagram" class="ig"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-      <a href="https://facebook.com/knrfortunefinancialservices" target="_blank" aria-label="Facebook" data-tooltip="Facebook" class="fb"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.facebook.com/knrfortunefinancialservices" target="_blank" aria-label="Facebook" data-tooltip="Facebook" class="fb"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
       <a href="https://www.threads.com/@knrfortunefs" target="_blank" aria-label="Threads" data-tooltip="Threads" class="th"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v10m-4-6h8"/></svg></a>
       <a href="https://t.me/knrfortunefs" target="_blank" aria-label="Telegram" data-tooltip="Telegram" class="tg"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></a>
       <a href="https://x.com/KNRFORTUNEFS" target="_blank" aria-label="X" data-tooltip="X (Twitter)" class="x"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
-      <a href="https://www.youtube.com/@KNRFORTUNEFS" target="_blank" aria-label="YouTube" data-tooltip="YouTube" class="yt"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.youtube.com/@knrfortunefs?sub_confirmation=1" target="_blank" aria-label="YouTube" data-tooltip="YouTube" class="yt"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
     </div>
   </div>
 </section>
