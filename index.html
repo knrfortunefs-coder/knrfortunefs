@@ -466,6 +466,24 @@
   .follow-btn.ig{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);}
   .follow-btn.fb{background:#1877F2;}
 
+  /* ---------- CAREERS ---------- */
+  #careers{background:var(--cream);}
+  .career-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:start;}
+  .career-wrap > *{min-width:0;}
+  .career-form{background:var(--white);border:1px solid var(--cream-dark);border-radius:18px;padding:34px;box-shadow:0 18px 40px -24px rgba(8,21,39,.35);width:100%;box-sizing:border-box;}
+  .career-form .form-group:last-of-type{margin-bottom:10px;}
+  .btn-outline-navy{border-color:var(--navy-800);color:var(--navy-800);background:transparent;}
+  .btn-outline-navy:hover{background:var(--navy-800);color:var(--white);}
+  #careerStatus{margin-top:14px;font-size:.88rem;font-weight:600;display:none;}
+  .career-benefits{background:linear-gradient(155deg,var(--navy-800) 0%,var(--navy-900) 70%);color:var(--white);border:1px solid rgba(226,197,101,.3);border-radius:18px;padding:34px;box-shadow:var(--shadow);}
+  .career-benefits h3{font-size:1.4rem;color:var(--white);margin-bottom:20px;}
+  .career-benefits ul{display:flex;flex-direction:column;gap:16px;}
+  .career-benefits li{display:flex;align-items:flex-start;gap:14px;}
+  .cb-ic{width:34px;height:34px;border-radius:50%;background:rgba(226,197,101,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cb-ic svg{width:17px;height:17px;color:var(--gold-400);}
+  .career-benefits li b{display:block;font-size:.95rem;font-weight:600;color:var(--white);}
+  .career-benefits li div span{display:block;font-size:.8rem;color:var(--muted-light);}
+
   /* ---------- HOW IT WORKS ---------- */
   #how{background:var(--white);}
   .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -508,6 +526,7 @@
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:repeat(2,1fr);}
     .ql-grid{grid-template-columns:repeat(2,1fr);}
+    .career-wrap{grid-template-columns:1fr;}
     .how-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;}
     .mf-points{grid-template-columns:repeat(2,1fr);}
     .testi-grid{grid-template-columns:repeat(2,1fr);}
@@ -525,6 +544,9 @@
     .rs-banner{flex-direction:column-reverse;text-align:center;padding:30px 22px;gap:20px;}
     .rs-logo{width:110px;height:110px;}
     .follow-btn{width:100%;justify-content:center;}
+    .career-form{padding:24px 18px;}
+    .career-benefits{padding:26px 20px;}
+    .career-form .form-actions .btn{width:100%;}
     .rs-banner .btn{width:100%;}
     .mf-points{grid-template-columns:1fr;}
     .mf-cta-box{flex-direction:column;text-align:center;padding:28px 22px;}
@@ -632,6 +654,7 @@
       <a href="#about">About</a>
       <a href="#enquiry">Enquiry</a>
       <a href="#contact">Contact</a>
+      <a href="#careers">Careers</a>
     </div>
     <div class="nav-cta">
       <a href="tel:7416763565" class="nav-call">
@@ -651,6 +674,7 @@
   <a href="#about">About</a>
   <a href="#enquiry">Enquiry</a>
   <a href="#contact">Contact</a>
+  <a href="#careers">Careers</a>
   <a href="tel:7416763565" style="color:#e2c565;">📞 7416763565</a>
 </div>
 
@@ -1411,6 +1435,57 @@
   </div>
 </section>
 
+<!-- ============ CAREERS ============ -->
+<section id="careers" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Careers · కెరీర్</div>
+      <h2 class="section-title">Join Our Team · మా టీమ్‌లో చేరండి</h2>
+      <p class="section-sub"><span class="te">ఆంధ్రప్రదేశ్ &amp; తెలంగాణ అంతటా ఇన్సూరెన్స్, ఇన్వెస్ట్‌మెంట్ మరియు రియల్ ఎస్టేట్ అడ్వైజర్లు, ఫీల్డ్ ఏజెంట్ల కోసం మేము ఎప్పుడూ వెతుకుతూ ఉంటాము.</span><br>We are always looking for insurance, investment and real estate advisors and field agents across Andhra Pradesh &amp; Telangana.</p>
+    </div>
+    <div class="career-wrap">
+      <form class="career-form reveal" id="careerForm" novalidate>
+        <div class="form-group">
+          <label for="cname">Full Name · పూర్తి పేరు *</label>
+          <input type="text" id="cname" placeholder="e.g. Ravi Kumar" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="cphone">Mobile Number · మొబైల్ నంబర్ *</label>
+          <input type="tel" id="cphone" placeholder="10-digit mobile number" inputmode="numeric" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="ccity">City / Location · నగరం / ప్రాంతం *</label>
+          <input type="text" id="ccity" placeholder="e.g. Guntur">
+        </div>
+        <div class="form-group">
+          <label for="coccupation">Current Occupation · ప్రస్తుత వృత్తి *</label>
+          <select id="coccupation"><option value="">Select Occupation</option><option>Student</option><option>Salaried Employee</option><option>Business Owner</option><option>Real Estate Agent</option><option>Insurance / Finance Agent</option><option>Unemployed / Looking for Work</option><option>Other</option></select>
+        </div>
+        <div class="form-group">
+          <label for="cinterest">Interested In (optional) · ఆసక్తి ఉన్న రంగం</label>
+          <select id="cinterest"><option value="">Select</option><option>Insurance</option><option>Mutual Funds &amp; Investments</option><option>Loans</option><option>Real Estate</option><option>Any of these</option></select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold" id="careerSubmit">Submit Application · దరఖాస్తు సమర్పించండి</button>
+          <button type="button" class="btn btn-outline-navy" id="careerWA">Apply via WhatsApp</button>
+        </div>
+        <p id="careerStatus" role="status"></p>
+      </form>
+      <div class="career-benefits reveal">
+        <h3>What You Get · మీకు లభించేవి</h3>
+        <ul>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">ప్రతి అమ్మకంపై ఆకర్షణీయమైన కమిషన్</b><span>Attractive commission on every sale</span></div></li>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">పూర్తి ట్రైనింగ్ అందిస్తాము</b><span>Full training provided</span></div></li>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">ఫ్లెక్సిబుల్ వర్క్ — పార్ట్‌టైమ్ / ఫుల్‌టైమ్</b><span>Flexible work — part-time or full-time</span></div></li>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">మార్కెటింగ్ &amp; లీడ్ సపోర్ట్</b><span>Marketing &amp; lead support</span></div></li>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">సకాలంలో, పారదర్శక చెల్లింపులు</b><span>Timely, transparent payouts</span></div></li>
+          <li><span class="cb-ic"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><div><b class="te">IRDAI &amp; AMFI సర్టిఫైడ్ అడ్వైజర్ మార్గదర్శకత్వం</b><span>Guidance from a certified advisor (IRDAI &amp; AMFI)</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
@@ -1435,6 +1510,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#enquiry">Enquiry</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#careers">Careers</a></li>
         </ul>
       </div>
       <div>
@@ -1563,6 +1639,48 @@
   (function(){
     var fl = document.getElementById('floatersLeft');
     if(fl) setTimeout(function(){ fl.classList.remove('intro'); }, 5000);
+  })();
+
+  // careers form: email via FormSubmit (same inbox as the enquiry form) or apply on WhatsApp
+  (function(){
+    var form = document.getElementById('careerForm');
+    if(!form) return;
+    var st = document.getElementById('careerStatus');
+    var btn = document.getElementById('careerSubmit');
+    function val(id){ return (document.getElementById(id).value || '').trim(); }
+    function say(msg, ok){ st.style.display = 'block'; st.style.color = ok ? '#1a7f37' : '#d9534f'; st.textContent = msg; }
+    document.getElementById('careerWA').addEventListener('click', function(){
+      var lines = ["Hi, I'd like to join the KNR Fortune Financial Services team."];
+      [['Name','cname'],['Mobile','cphone'],['City','ccity'],['Occupation','coccupation'],['Interested in','cinterest']].forEach(function(x){
+        var v = val(x[1]); if(v) lines.push(x[0] + ': ' + v);
+      });
+      window.open('https://wa.me/917416763565?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+    });
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var phone = val('cphone').replace(/[\s-]/g,'');
+      if(!val('cname') || !val('ccity') || !val('coccupation')){ say('Please fill in your name, city and occupation. · దయచేసి అన్ని వివరాలు నింపండి.', false); return; }
+      if(!/^[0-9]{10}$/.test(phone)){ say('Please enter a valid 10-digit mobile number. · సరైన 10 అంకెల మొబైల్ నంబర్ ఇవ్వండి.', false); return; }
+      var label = btn.textContent; btn.textContent = 'Sending...'; btn.disabled = true;
+      try{
+        var res = await fetch('https://formsubmit.co/ajax/knrfortunefs@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'New Career Application - KNR Fortune Website',
+            _template: 'table',
+            _honey: '',
+            Name: val('cname'), Mobile: phone, City: val('ccity'),
+            Occupation: val('coccupation'), 'Interested In': val('cinterest') || '-'
+          })
+        });
+        if(!res.ok) throw new Error('send failed');
+        say('\u2713 Application submitted! Our team will reach out soon. · దరఖాస్తు సమర్పించబడింది!', true);
+        form.reset();
+      } catch(err){
+        say('Something went wrong. Please try WhatsApp instead. · దయచేసి WhatsApp ద్వారా ప్రయత్నించండి.', false);
+      } finally { btn.textContent = label; btn.disabled = false; }
+    });
   })();
 
   // gallery lightbox
